@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSIS SMK Daarut Tauhiid - Full Day School Bandung</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a6b3c;
+            --primary-dark: #0d4a28;
+            --primary-light: #2e8b57;
+            --gold: #d4a017;
+            --gold-light: #f0c75e;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --gray: #6c757d;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+            background: var(--light);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(26, 107, 60, 0.97);
+            padding: 10px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .nav-logo .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .nav-logo span {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-logo small {
+            display: block;
+            font-size: 11px;
+            font-weight: 400;
+            opacity: 0.85;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(212, 160, 23, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 20s; }
+        .particle:nth-child(2) { left: 20%; top: 60%; animation-delay: 2s; animation-duration: 18s; width: 15px; height: 15px; }
+        .particle:nth-child(3) { left: 60%; top: 30%; animation-delay: 4s; animation-duration: 22s; }
+        .particle:nth-child(4) { left: 80%; top: 70%; animation-delay: 1s; animation-duration: 16s; width: 8px; height: 8px; }
+        .particle:nth-child(5) { left: 40%; top: 80%; animation-delay: 3s; animation-duration: 25s; width: 12px; height: 12px; }
+        .particle:nth-child(6) { left: 70%; top: 10%; animation-delay: 5s; animation-duration: 19s; }
+        .particle:nth-child(7) { left: 90%; top: 50%; animation-delay: 2.5s; animation-duration: 21s; width: 6px; height: 6px; }
+        .particle:nth-child(8) { left: 30%; top: 40%; animation-delay: 1.5s; animation-duration: 17s; width: 14px; height: 14px; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.3; }
+            25% { transform: translateY(-30px) translateX(20px) rotate(90deg); opacity: 0.6; }
+            50% { transform: translateY(-60px) translateX(-20px) rotate(180deg); opacity: 0.3; }
+            75% { transform: translateY(-30px) translateX(30px) rotate(270deg); opacity: 0.6; }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212, 160, 23, 0.2);
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-arabic {
+            font-family: 'Amiri', serif;
+            font-size: 32px;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+            animation: fadeInDown 1s ease 0.2s both;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1.1;
+            animation: fadeInDown 1s ease 0.4s both;
+        }
+
+        .hero h1 .highlight {
+            color: var(--gold-light);
+            position: relative;
+        }
+
+        .hero h2 {
+            font-size: 22px;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 15px;
+            animation: fadeInDown 1s ease 0.6s both;
+        }
+
+        .hero p {
+            font-size: 16px;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 35px;
+            line-height: 1.7;
+            animation: fadeInDown 1s ease 0.8s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 1s both;
+        }
+
+        .btn {
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--primary-dark);
+            box-shadow: 0 5px 20px rgba(212, 160, 23, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 160, 23, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 60px;
+            animation: fadeInUp 1s ease 1.2s both;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--gold-light);
+        }
+
+        .stat-item p {
+            font-size: 13px;
+            opacity: 0.7;
+            margin: 0;
+        }
+
+        .hero-wave {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        .section {
+            padding: 100px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header .subtitle {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .section-header .line {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--gold));
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image .img-box {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image .img-box::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M20 20l-10-10v20l10-10zm0 0l10-10v20L20 20z'/%3E%3C/g%3E%3C/svg%3E");
+            animation: movePattern 20s linear infinite;
+        }
+
+        @keyframes movePattern {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50%, -50%); }
+        }
+
+        .about-image .img-box i {
+            font-size: 120px;
+            color: rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-image .floating-card {
+            position: absolute;
+            background: var(--white);
+            padding: 20px 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .about-image .floating-card.card-1 {
+            bottom: -20px;
+            left: -20px;
+        }
+
+        .about-image .floating-card.card-2 {
+            top: -20px;
+            right: -20px;
+        }
+
+        .floating-card .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .floating-card .icon.green {
+            background: rgba(26, 107, 60, 0.1);
+            color: var(--primary);
+        }
+
+        .floating-card .icon.gold {
+            background: rgba(212, 160, 23, 0.1);
+            color: var(--gold);
+        }
+
+        .floating-card h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .floating-card p {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .about-content h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .about-content h3 span {
+            color: var(--primary);
+        }
+
+        .about-content > p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-feature i {
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .about-feature span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* ===== VISI MISI ===== */
+        .visi-misi {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visi-misi::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M40 0l40 40-40 40L0 40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .visi-misi .section-header .subtitle {
+            color: var(--gold-light);
+        }
+
+        .visi-misi .section-header h2 {
+            color: var(--white);
+        }
+
+        .visi-misi .section-header p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .vm-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .vm-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .vm-card .vm-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+        }
+
+        .vm-card h3 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .vm-card p {
+            opacity: 0.85;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .vm-card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .vm-card ul li {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            opacity: 0.85;
+            font-size: 14px;
+        }
+
+        .vm-card ul li i {
+            color: var(--gold-light);
+            margin-top: 3px;
+        }
+
+        /* ===== STRUKTUR ===== */
+        .struktur {
+            background: var(--white);
+        }
+
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .org-level {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .org-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            width: 220px;
+            border: 2px solid transparent;
+        }
+
+        .org-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .org-card.chairman {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            width: 260px;
+        }
+
+        .org-card .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .org-card .avatar {
+            background: rgba(26, 107, 60, 0.1);
+            color: var(--primary);
+        }
+
+        .org-card.chairman .avatar {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+        }
+
+        .org-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .org-card .position {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .org-card .position {
+            background: rgba(26, 107, 60, 0.1);
+            color: var(--primary);
+        }
+
+        .org-card.chairman .position {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+        }
+
+        .connector {
+            width: 2px;
+            height: 30px;
+            background: var(--primary);
+            opacity: 0.3;
+        }
+
+        /* ===== PROGRAM ===== */
+        .program {
+            background: var(--light);
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .program-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--gold));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .program-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .program-card .prog-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .program-card:nth-child(1) .prog-icon { background: rgba(26, 107, 60, 0.1); color: var(--primary); }
+        .program-card:nth-child(2) .prog-icon { background: rgba(212, 160, 23, 0.1); color: var(--gold); }
+        .program-card:nth-child(3) .prog-icon { background: rgba(52, 152, 219, 0.1); color: #3498db; }
+        .program-card:nth-child(4) .prog-icon { background: rgba(231, 76, 60, 0.1); color: #e74c3c; }
+        .program-card:nth-child(5) .prog-icon { background: rgba(155, 89, 182, 0.1); color: #9b59b6; }
+        .program-card:nth-child(6) .prog-icon { background: rgba(46, 204, 113, 0.1); color: #2ecc71; }
+
+        .program-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .program-card p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* ===== GALERI ===== */
+        .galeri {
+            background: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 200px);
+            gap: 15px;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 46, 0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: var(--white);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item .gallery-overlay i {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .gallery-item .gallery-overlay span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .gallery-item i.gallery-icon {
+            font-size: 40px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .gallery-item:nth-child(2) { background: linear-gradient(135deg, #2c3e50, #3498db); }
+        .gallery-item:nth-child(3) { background: linear-gradient(135deg, var(--gold), #e67e22); }
+        .gallery-item:nth-child(4) { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+        .gallery-item:nth-child(5) { background: linear-gradient(135deg, #16a085, #2ecc71); }
+
+        /* ===== BERITA ===== */
+        .berita {
+            background: var(--light);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .news-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .news-img {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .news-card:nth-child(1) .news-img { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
+        .news-card:nth-child(2) .news-img { background: linear-gradient(135deg, var(--gold), #e67e22); }
+        .news-card:nth-child(3) .news-img { background: linear-gradient(135deg, #2c3e50, #3498db); }
+
+        .news-img i {
+            font-size: 50px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .news-date {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--white);
+            padding: 8px 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-date .day {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+            line-height: 1;
+        }
+
+        .news-date .month {
+            font-size: 11px;
+            color: var(--gray);
+            text-transform: uppercase;
+        }
+
+        .news-body {
+            padding: 25px;
+        }
+
+        .news-body .tag {
+            display: inline-block;
+            background: rgba(26, 107, 60, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .news-body h4 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+            line-height: 1.4;
+        }
+
+        .news-body p {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .news-body .read-more {
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s ease;
+        }
+
+        .news-body .read-more:hover {
+            gap: 10px;
+        }
+
+        /* ===== KONTAK ===== */
+        .kontak {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            padding: 20px 0;
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .contact-info > p {
+            color: var(--gray);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item .ci-icon {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            background: rgba(26, 107, 60, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        .contact-item h5 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark);
+        }
+
+        .contact-item p {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(26, 107, 60, 0.1);
+            color: var(--primary);
+            font-size: 18px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .contact-form h4 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--dark);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(26, 107, 60, 0.1);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 107, 60, 0.3);
+        }
+
+        /* ===== MAP ===== */
+        .map-section {
+            background: var(--light);
+            padding: 0 0 80px;
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .map-box {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 15px;
+            border: 2px dashed var(--primary);
+        }
+
+        .map-box i {
+            font-size: 60px;
+            color: var(--primary);
+            opacity: 0.5;
+        }
+
+        .map-box p {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 80px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-about .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .footer-about .footer-logo .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .footer-about .footer-logo span {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .footer h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-light);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+        }
+
+        .footer-bottom p a {
+            color: var(--gold-light);
+            text-decoration: none;
+        }
+
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border: none;
+            border-radius: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(26, 107, 60, 0.3);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 40px; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .vm-grid { grid-template-columns: 1fr; }
+            .program-grid { grid-template-columns: repeat(2, 1fr); }
+            .news-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 180px); }
+            .gallery-item:nth-child(1) { grid-column: span 2; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--primary-dark);
+                flex-direction: column;
+                padding: 80px 30px 30px;
+                transition: right 0.4s ease;
+                gap: 5px;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                padding: 12px 20px;
+                border-radius: 10px;
+                font-size: 15px;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            .hero h1 { font-size: 32px; }
+            .hero h2 { font-size: 18px; }
+            .hero-arabic { font-size: 24px; }
+            .hero-stats { gap: 25px; }
+            .hero-stats .stat-item h3 { font-size: 26px; }
+            .section { padding: 70px 0; }
+            .section-header h2 { font-size: 30px; }
+            .program-grid { grid-template-columns: 1fr; }
+            .news-grid { grid-template-columns: 1fr; }
+            .org-level { flex-direction: column; align-items: center; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+            .gallery-item { height: 200px; }
+            .about-features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#beranda" class="nav-logo">
+                <div class="logo-icon">DT</div>
+                <div>
+                    <span>OSIS SMK DT</span>
+                    <small>Daarul Tauhiid Bandung</small>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#beranda" class="active">Beranda</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#visi-misi">Visi & Misi</a></li>
+                <li><a href="#struktur">Struktur</a></li>
+                <li><a href="#program">Program</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="#berita">Berita</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="beranda">
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-star"></i> &nbsp; Full Day School — Periode 2025/2026
+            </div>
+            <div class="hero-arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+            <h1>OSIS SMK <span class="highlight">Daarul Tauhiid</span></h1>
+            <h2>Full Day School Bandung — Cicadas, Jawa Barat</h2>
+            <p>Mewujudkan generasi Muslim yang unggul dalam iman, ilmu, dan amal. Bersama membangun karakter Islami dan prestasi gemilang.</p>
+            <div class="hero-buttons">
+                <a href="#program" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Program Kerja
+                </a>
+                <a href="#tentang" class="btn btn-outline">
+                    <i class="fas fa-info-circle"></i> Tentang Kami
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3 id="counter1">0</h3>
+                    <p>Pengurus Aktif</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="counter2">0</h3>
+                    <p>Program Kerja</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="counter3">0</h3>
+                    <p>Kegiatan/Tahun</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="counter4">0</h3>
+                    <p>Siswa Aktif</p>
+                </div>
+            </div>
+        </div>
+        <svg class="hero-wave" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 60L48 55C96 50 192 40 288 45C384 50 480 70 576 75C672 80 768 70 864 60C960 50 1056 40 1152 45C1248 50 1344 70 1392 80L1440 90V120H1392C1344 120 1248 120 1152 120C1056 120 960 120 864 120C768 120 672 120 576 120C480 120 384 120 288 120C192 120 96 120 48 120H0V60Z" fill="#f8f9fa"/>
+        </svg>
+    </section>
+
+    <!-- TENTANG -->
+    <section class="section about" id="tentang">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image fade-in">
+                    <div class="img-box">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="floating-card card-1">
+                        <div class="icon green">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div>
+                            <h4>A+</h4>
+                            <p>Akreditasi Sekolah</p>
+                        </div>
+                    </div>
+                    <div class="floating-card card-2">
+                        <div class="icon gold">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h4>500+</h4>
+                            <p>Siswa Aktif</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content fade-in">
+                    <div class="section-header" style="text-align:left; margin-bottom: 20px;">
+                        <div class="subtitle">Tentang Kami</div>
+                    </div>
+                    <h3>Organisasi Siswa Intra Sekolah <span>SMK Daarut Tauhiid</span></h3>
+                    <p>OSIS SMK Daarut Tauhiid merupakan wadah organisasi siswa yang bergerak dalam pengembangan karakter Islami, kepemimpinan, dan prestasi akademik. Sebagai sekolah berbasis pesantren dengan sistem Full Day School, kami mengintegrasikan nilai-nilai keislaman dalam setiap kegiatan.</p>
+                    <p>Berlokasi di Cicadas, Bandung, Jawa Barat, SMK Daarut Tauhiid berkomitmen mencetak generasi yang tidak hanya cerdas secara akademik, tetapi juga kuat dalam iman dan berakhlak mulia sesuai dengan ajaran Rasulullah ﷺ.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Berbasis Pesantren</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Full Day School</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Kurikulum Merdeka</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Tahfidz Al-Quran</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Ekstrakulikuler Lengkap</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Guru Berkualitas</span>
+                        </div>
+                    </div>
+                    <a href="#visi-misi" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i> Lihat Visi & Misi
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISI MISI -->
+    <section class="section visi-misi" id="visi-misi">
+        <div class="container">
+            <div class="section-header">
+                <div class="subtitle">Arah & Tujuan</div>
+                <h2>Visi & Misi OSIS</h2>
+                <p>Landasan dan arah gerak organisasi siswa SMK Daarut Tauhiid dalam membangun generasi unggul</p>
+                <div class="line" style="background: linear-gradient(to right, var(--gold), var(--gold-light));"></div>
+            </div>
+            <div class="vm-grid">
+                <div class="vm-card fade-in">
+                    <div class="vm-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Visi</h3>
+                    <p>"Terwujudnya siswa SMK Daarut Tauhiid yang beriman, bertakwa, berakhlak mulia, berprestasi, dan memiliki jiwa kepemimpinan Islami berdasarkan Al-Quran dan As-Sunnah."</p>
+                </div>
+                <div class="vm-card fade-in">
+                    <div class="vm-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Misi</h3>
+                    <ul>
+                        <li><i class="fas fa-star"></i> Menumbuhkan penghayatan dan pengamalan ajaran Islam</li>
+                        <li><i class="fas fa-star"></i> Membangun karakter siswa yang disiplin dan bertanggung jawab</li>
+                        <li><i class="fas fa-star"></i> Mengembangkan kreativitas dan inovasi siswa</li>
+                        <li><i class="fas fa-star"></i> Meningkatkan prestasi akademik dan non-akademik</li>
+                        <li><i class="fas fa-star"></i> Menciptakan lingkungan sekolah yang Islami dan kondusif</li>
+                        <li><i class="fas fa-star"></i> Menumbuhkan jiwa sosial dan kepedulian terhadap sesama</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STRUKTUR -->
+    <section class="section struktur" id="struktur">
+        <div class="container">
+            <div class="section-header">
+                <div class="subtitle">Pengurus</div>
+                <h2>Struktur Organisasi</h2>
+                <p>Susunan pengurus OSIS SMK Daarut Tauhiid periode 2025/2026</p>
+                <div class="line"></div>
+            </div>
+            <div class="org-chart">
+                <!-- Pembina -->
+                <div class="org-level fade-in">
+                    <div class="org-card" style="border-color: var(--gold); background: linear-gradient(135deg, #fef9e7, #fff);">
+                        <div class="avatar" style="background: rgba(212, 160, 23, 0.15); color: var(--gold);">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>Bpk. Ahmad, S.Pd.I</h4>
+                        <span class="position" style="background: rgba(212, 160, 23, 0.15); color: #b8860b;">Pembina OSIS</span>
+                    </div>
+                </div>
+                <div class="connector"></div>
+                <!-- Ketua -->
+                <div class="org-level fade-in">
+                    <div class="org-card chairman">
+                        <div class="avatar">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h4>Muhammad Rizki</h4>
+                        <span class="position">Ketua OSIS</span>
+                    </div>
+                </div>
+                <div class="connector"></div>
+                <!-- Wakil & Sekre & Bendahara -->
+                <div class="org-level fade-in">
+                    <div class="org-card">
+                        <div class="avatar"><i class="fas fa-user"></i></div>
+                        <h4>Aisyah Putri</h4>
+                        <span class="position">Wakil Ketua</span>
+                    </div>
+                    <div class="org-card">
+                        <div class="avatar"><i class="fas fa-user"></i></div>
+                        <h4>Fatimah Zahra</h4>
+                        <span class="position">Sekretaris</span>
+                    </div>
+                    <div class="org-card">
+                        <div class="avatar"><i class="fas fa-user"></i></div>
+                        <h4>Khadijah Amina</h4>
+                        <span class="position">Bendahara</span>
+                    </div>
+                </div>
+                <div class="connector"></div>
+                <!-- Seksi-seksi -->
+                <div class="org-level fade-in">
+                    <div class="org-card">
+                        <div class="avatar"><i class="fas fa-mosque"></i></div>
+                        <h4>Sie. Rohani</h4>
+                        <span class="position">Seksi Keagamaan</span>
+                    </div>
+                    <div class="org-card">
+                        <div class="avatar"><i class="fas fa-graduation-cap"></i></div>
+                        <h4>Sie. Pendidikan</h4>
+                        <span class="position">Seksi Akademik</span>
+                    </div>
+                    <div class="org-card">
+                        <div class="avatar"><i class="fas fa-futbol"></i></div>
+                        <h4>Sie. Olahraga</h4>
+                        <span class="position">Seksi Olahraga</span>
+                    </div>
+                    <div class="org-card">
+                        <div class="avatar"><i class="fas fa-palette"></i></div>
+                        <h4>Sie. Seni</h4>
+                        <span class="position">Seksi Kesenian</span>
+                    </div>
+                    <div class="org-card">
+                        <div class="avatar"><i class="fas fa-hands-helping"></i></div>
+                        <h4>Sie. Sosial</h4>
+                        <span class="position">Seksi Sosial</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAM -->
+    <section class="section program" id="program">
+        <div class="container">
+            <div class="section-header">
+                <div class="subtitle">Kegiatan</div>
+                <h2>Program Kerja</h2>
+                <p>Program-program unggulan OSIS SMK Daarut Tauhiid untuk mengembangkan potensi siswa</p>
+                <div class="line"></div>
+            </div>
+            <div class="program-grid">
+                <div class="program-card fade-in">
+                    <div class="prog-icon"><i class="fas fa-quran"></i></div>
+                    <h4>Tahfidz & Kajian Rutin</h4>
+                    <p>Program hafalan Al-Quran dan kajian keislaman rutin setiap pekan untuk memperkuat fondasi iman siswa.</p>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="prog-icon"><i class="fas fa-trophy"></i></div>
+                    <h4>Lomba & Kompetisi</h4>
+                    <p>Mengikuti dan menyelenggarakan berbagai lomba akademik, keagamaan, dan olahraga tingkat sekolah maupun nasional.</p>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="prog-icon"><i class="fas fa-hands-helping"></i></div>
+                    <h4>Bakti Sosial</h4>
+                    <p>Kegiatan sosial kemasyarakatan seperti santunan anak yatim, bantuan bencana, dan bersih-bersih lingkungan.</p>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="prog-icon"><i class="fas fa-campground"></i></div>
+                    <h4>Latihan Kepemimpinan</h4>
+                    <p>Training kepemimpinan Islami (Latsip) untuk membentuk karakter pemimpin muda yang berakhlak mulia.</p>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="prog-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h4>Peringatan Hari Besar Islam</h4>
+                    <p>Memperingati hari-hari besar Islam seperti Maulid Nabi, Isra Mi'raj, Ramadan, dan Idul Adha dengan berbagai kegiatan.</p>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="prog-icon"><i class="fas fa-seedling"></i></div>
+                    <h4>Green School Program</h4>
+                    <p>Program penghijauan dan pelestarian lingkungan sekolah melalui bank sampah, urban farming, dan eco-patrol.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERI -->
+    <section class="section galeri" id="galeri">
+        <div class="container">
+            <div class="section-header">
+                <div class="subtitle">Dokumentasi</div>
+                <h2>Galeri Kegiatan</h2>
+                <p>Momen-momen berharga dari berbagai kegiatan OSIS SMK Daarut Tauhiid</p>
+                <div class="line"></div>
+            </div>
+            <div class="gallery-grid fade-in">
+                <div class="gallery-item">
+                    <i class="fas fa-mosque gallery-icon"></i>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <span>Sholat Berjamaah</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-users gallery-icon"></i>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <span>Upacara OSIS</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-book-open gallery-icon"></i>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <span>Kajian Rutin</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-running gallery-icon"></i>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <span>Classmeeting</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-hand-holding-heart gallery-icon"></i>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <span>Bakti Sosial</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BERITA -->
+    <section class="section berita" id="berita">
+        <div class="container">
+            <div class="section-header">
+                <div class="subtitle">Informasi Terkini</div>
+                <h2>Berita & Kegiatan</h2>
+                <p>Update terbaru seputar kegiatan dan prestasi OSIS SMK Daarut Tauhiid</p>
+                <div class="line"></div>
+            </div>
+            <div class="news-grid">
+                <div class="news-card fade-in">
+                    <div class="news-img">
+                        <i class="fas fa-trophy"></i>
+                        <div class="news-date">
+                            <span class="day">15</span>
+                            <span class="month">Okt 2026</span>
+                        </div>
+                    </div>
+                    <div class="news-body">
+                        <span class="tag">Prestasi</span>
+                        <h4>Juara 1 Lomba Tahfidz Tingkat Kota Bandung</h4>
+                        <p>Siswa SMK Daarut Tauhiid berhasil meraih juara 1 dalam lomba tahfidz Al-Quran tingkat kota...</p>
+                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="news-card fade-in">
+                    <div class="news-img">
+                        <i class="fas fa-hands-helping"></i>
+                        <div class="news-date">
+                            <span class="day">08</span>
+                            <span class="month">Okt 2026</span>
+                        </div>
+                    </div>
+                    <div class="news-body">
+                        <span class="tag">Kegiatan</span>
+                        <h4>Bakti Sosial OSIS di Panti Asuhan Cicadas</h4>
+                        <p>OSIS mengadakan kegiatan bakti sosial berupa pembagian sembako dan santunan kepada anak yatim...</p>
+                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="news-card fade-in">
+                    <div class="news-img">
+                        <i class="fas fa-campground"></i>
+                        <div class="news-date">
+                            <span class="day">01</span>
+                            <span class="month">Okt 2026</span>
+                        </div>
+                    </div>
+                    <div class="news-body">
+                        <span class="tag">Organisasi</span>
+                        <h4>Pelantikan Pengurus OSIS Periode 2025/2026</h4>
+                        <p>Pelantikan pengurus OSIS baru dilaksanakan di aula sekolah dengan dihadiri oleh seluruh civitas...</p>
+                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section class="section kontak" id="kontak">
+        <div class="container">
+            <div class="section-header">
+                <div class="subtitle">Hubungi Kami</div>
+                <h2>Kontak & Lokasi</h2>
+                <p>Jangan ragu untuk menghubungi kami untuk informasi lebih lanjut</p>
+                <div class="line"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3>SMK Daarut Tauhiid</h3>
+                    <p>Full Day School — Cicadas, Bandung, Jawa Barat. Kami siap melayani pertanyaan dan saran dari seluruh siswa, orang tua, dan masyarakat.</p>
+                    <div class="contact-item">
+                        <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h5>Alamat</h5>
+                            <p>Jl. Cikutra, Kec. Cicadas,<br>Kota Bandung, Jawa Barat 40192</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="ci-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <h5>Telepon</h5>
+                            <p>(022) 1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h5>Email</h5>
+                            <p>osis@smkdaaruttauhiid.sch.id</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="ci-icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h5>Jam Operasional</h5>
+                            <p>Senin - Jumat: 07.00 - 16.00 WIB<br>Sabtu: 07.00 - 12.00 WIB</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <h4><i class="fas fa-paper-plane"></i> Kirim Pesan</h4>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" placeholder="Masukkan nama lengkap" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="Masukkan email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Subjek</label>
+                            <input type="text" placeholder="Subjek pesan">
+                        </div>
+                        <div class="form-group">
+                            <label>Pesan</label>
+                            <textarea placeholder="Tulis pesan Anda di sini..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP -->
+    <section class="map-section">
+        <div class="map-container">
+            <div class="map-box">
+                <i class="fas fa-map-marked-alt"></i>
+                <p>📍 Cicadas, Kota Bandung, Jawa Barat</p>
+                <a href="https://maps.google.com/?q=Cicadas+Bandung" target="_blank" class="btn btn-primary" style="font-size: 13px; padding: 10px 25px;">
+                    <i class="fas fa-directions"></i> Buka di Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-icon">DT</div>
+                        <span>OSIS SMK Daarut Tauhiid</span>
+                    </div>
+                    <p>Organisasi Siswa Intra Sekolah SMK Daarut Tauhiid Full Day School Bandung. Mewujudkan generasi Muslim yang unggul dalam iman, ilmu, dan amal.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Menu</h4>
+                    <ul class="footer-links">
+                        <li><a href="#beranda"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+                        <li><a href="#tentang"><i class="fas fa-chevron-right"></i> Tentang</a></li>
+                        <li><a href="#visi-misi"><i class="fas fa-chevron-right"></i> Visi & Misi</a></li>
+                        <li><a href="#struktur"><i class="fas fa-chevron-right"></i> Struktur</a></li>
+                        <li><a href="#program"><i class="fas fa-chevron-right"></i> Program</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Program</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tahfidz</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Bakti Sosial</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Latsip</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Classmeeting</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> PHBI</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Kontak</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Cicadas, Bandung</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> (022) 1234-5678</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> osis@smkdt.sch.id</a></li>
+                        <li><a href="#"><i class="fas fa-globe"></i> www.smkdaaruttauhiid.sch.id</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 OSIS SMK Daarut Tauhiid. All rights reserved.</p>
+                <p>Dibuat dengan <i class="fas fa-heart" style="color: #e74c3c;"></i> oleh Tim IT OSIS</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Counter animation
+        function animateCounter(elementId, target, duration) {
+            const element = document.getElementById(elementId);
+            let start = 0;
+            const increment = target / (duration / 16);
+
+            function update() {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target + '+';
+                } else {
+                    element.textContent = Math.floor(start) + '+';
+                    requestAnimationFrame(update);
+                }
+            }
+            update();
+        }
+
+        // Start counters when hero is visible
+        let countersStarted = false;
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !countersStarted) {
+                    countersStarted = true;
+                    animateCounter('counter1', 25, 2000);
+                    animateCounter('counter2', 12, 2000);
+                    animateCounter('counter3', 30, 2000);
+                    animateCounter('counter4', 500, 2000);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        heroObserver.observe(document.querySelector('.hero-stats'));
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        fadeElements.forEach(el => fadeObserver.observe(el));
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Jazakallahu khairan! Pesan Anda telah terkirim. Kami akan segera merespons.');
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
